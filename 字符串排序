@@ -1,0 +1,38 @@
+
+int main()
+{
+    char input[1001] = {0};
+    char character[1001] = {0};
+    int index = 0;
+    
+    while(gets(input) != NULL)
+    {
+        /* 按字母顺序不区分大小 从字符串中提取 字母放入 新数组中 …*/
+        for(char j = 'A'; j <= 'Z'; j++)
+        {
+            for(int i = 0; i < strlen(input); i++)
+            {
+                
+                if(input[i] == j 
+                   || ((input[i] - 32 == j) && input[i] >= 'a' && input[i] <= 'z'))
+                {
+                    character[index++] = input[i];
+                }
+            }
+        }
+        
+        /* 替换原来的字母，并输出 */
+        index = 0;
+        for(int i = 0; i < strlen(input); i++)
+        {
+            if((input[i] >= 'a' && input[i] <= 'z' )
+              ||(input[i] >= 'A' && input[i] <= 'Z'))
+            {
+                input[i] = character[index++];
+            }
+            printf("%c", input[i]);
+        }
+        
+    }
+    return 0;
+}
